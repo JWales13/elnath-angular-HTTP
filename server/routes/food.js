@@ -9,7 +9,7 @@ router.get('/', function(req,res){
             res.sendStatus(500);
         }
         else{
-            client.query('SELECT * FROM food', function(err, result){
+            client.query('SELECT * FROM food ORDER BY id', function(err, result){
                 if(err){
                     console.log('error', err)
                     res.sendStatus(500);
