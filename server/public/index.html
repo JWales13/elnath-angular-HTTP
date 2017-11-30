@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="RestaurantApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/style.css">
-    <scripts src= "vendors/angular.js"></scripts>
-    <title>Document</title>
+    <script src="vendors/angular.js"></script>
+    <script src="scripts/client.js"></script>
+    <title>Food</title>
 </head>
-<body>
-    
+<body ng-controller='FoodController as vm'>
+
+    {{vm.foodArray}}
+    <h1>Angular HTTP</h1>
+    <h2>food list</h2>
+    <input type="text" ng-model="vm.newFood.name" placeholder="name">
+    <input type="number" ng-model="vm.newFood.deliciousness_rating" placeholder="deliciousness_rating">
+    <label> is it hot?</label>
+    <input type="checkbox" ng-model="vm.newFood.is_hot" >
+    <button ng-click="vm.addNewFood(vm.newFood)">Add Food</button>
+    {{vm.newfood}}
+    <ul>
+        <li ng-repeat="food in vm.foodArray">
+            {{food.name}} 
+            <span ng-show="food.is_hot">is really hot</span> 
+            <span ng-hide="food.is_hot">is not that hot</span>
+            and
+            {{food.deliciousness_rating > 80 ? 'is really reaaly good'  :  'not that good'}}
+            <button ng-click='vm.deleteFood(food.id)'>Delete</button>
+            <button ng-click='vm.editFood(food.id)'>Edit</button>
+        </li>
+    </ul>
+    {{3+9}}
 </body>
 </html>
